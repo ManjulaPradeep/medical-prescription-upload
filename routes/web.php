@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages\common\home');
 });
+
+Route::get('loginPage', function () {return view('pages.common.login');})->name('loginPage');
+Route::get('registerPage', function () {return view('pages.common.register');})->name('registerPage');

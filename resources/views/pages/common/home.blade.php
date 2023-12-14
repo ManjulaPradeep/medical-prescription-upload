@@ -16,7 +16,7 @@
             <a href="{{ URL::route('loginPage') }}" class="btn btn-primary w-100"> Login </a>
         </div>
         <div class="col-2">
-            <a href="{{ URL::route('registerPage') }}" class="btn btn-primary w-100"> Register </a>
+            <a href="{{ URL::route('register') }}" class="btn btn-primary w-100"> Register </a>
         </div>
     </div>
 

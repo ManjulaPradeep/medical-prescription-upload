@@ -36,6 +36,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\CheckStaff::class,
+            \App\Http\Middleware\CheckCustomer::class,
         ],
 
         'api' => [
@@ -65,4 +67,11 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+
+    protected $routeMiddleware = [
+        'staff' => \App\Http\Middleware\CheckStaff::class,
+        'customer' => \App\Http\Middleware\CheckCustomer::class,
+    ];
+    
+    
 }

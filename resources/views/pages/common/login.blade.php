@@ -10,7 +10,7 @@
 
 		<div class="userSelect" id="userSelect">
 			User Type			
-			<select name="userType" required="required">
+			<select name="user_type" required="required">
 				<option value="customer">Customer</option>
 				<option value="staff">Pharmacy Staff</option>
 			</select>
@@ -28,7 +28,7 @@
 	</form>
 
 	<div class="inputBox">
-		<a href="{{ URL::route('registerPage') }}" class="form-link">New user? Please Register </a>
+		<a href="{{ URL::route('register') }}" class="form-link">New user? Please Register </a>
 	</div>
 
 </div>

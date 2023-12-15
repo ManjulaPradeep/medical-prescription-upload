@@ -1,5 +1,7 @@
 @extends('\layout\master')
 
+@section('title', 'Register')
+
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
 

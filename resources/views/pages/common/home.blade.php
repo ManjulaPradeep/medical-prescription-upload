@@ -1,5 +1,7 @@
 @extends('\layout\master')
 
+@section('title', 'Home')
+
 @section('content')
     <div class="row text-center">
         <h1 class="text-primary">Online Medicine Odering</h1>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PrescriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,5 +31,10 @@ Route::middleware('staff')->group(function () {
 Route::middleware('customer')->group(function () {
     // Customer routes
     Route::get('customer_dashboard', function () {return view('customer.dashboard');})->name('customer_dashboard');
+    Route::post('prescription',[PrescriptionController::class,'store'])->name('savePrescription');
 });
+
+
+//for Testing - skipping permissions
+Route::get('customer_dashboard', function () {return view('customer.dashboard');})->name('customer_dashboard');
 

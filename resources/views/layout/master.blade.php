@@ -21,6 +21,7 @@
         </footer>
 
     </div>
+    @include('\includes.scripts')
 </body>
 
 </html>

@@ -3,35 +3,45 @@
 @section('title', 'Login')
 
 @section('content')
-<link rel="stylesheet" href="{{asset('assets/css/login.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
 
-<div class="box">
-	<h2>Login</h2>
-	<form action="" method="POST">
-		@csrf
+    <div class="box">
+        <h2>Login</h2>
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
 
-		<div class="userSelect" id="userSelect">
-			User Type			
-			<select name="user_type" required="required">
-				<option value="customer">Customer</option>
-				<option value="staff">Pharmacy Staff</option>
-			</select>
-		</div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-		<div class="inputBox">
-			<input type="text" name="" required="required">
-			<label for="">Username</label>
-		</div>
-		<div class="inputBox">
-			<input type="password" name="" required="required">
-			<label for="">Password</label>
-		</div>
-		<input type="submit" name="" value="Submit">
-	</form>
+            <div class="userSelect" id="userSelect">
+                User Type
+                <select name="user_type" required="required">
+                    <option value="customer">Customer</option>
+                    <option value="staff">Pharmacy Staff</option>
+                </select>
+            </div>
 
-	<div class="inputBox">
-		<a href="{{ URL::route('register') }}" class="form-link">New user? Please Register </a>
-	</div>
+            <div class="inputBox">
+                <input type="email" name="email" required="required">
+                <label for="">E mail</label>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" required="required">
+                <label for="">Password</label>
+            </div>
+            <input type="submit" name="" value="Submit">
+        </form>
 
-</div>
+        <div class="inputBox">
+            <a href="{{ URL::route('register') }}" class="form-link">New user? Please Register </a>
+        </div>
+
+    </div>
 @endsection

@@ -13,9 +13,22 @@
     </div>
 
 
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
 
     <!-- Modal -->
-    <div class="modal fade" id="AddPrescriptionModal" tabindex="-1" aria-labelledby="AddPrescriptionModal" aria-hidden="true">
+    <div class="modal fade" id="AddPrescriptionModal" tabindex="-1" aria-labelledby="AddPrescriptionModal"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">

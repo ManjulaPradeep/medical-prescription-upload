@@ -56,7 +56,7 @@ class RegisterController extends Controller
             $user->assignRole('staff');
             $this->redirectTo = route('staff_dashboard'); // Redirect to staff dashboard
         } else {
-            $user->assignRole('customer');
+            $user->assignRole('customer');// Assinging role by Spatie
             $this->redirectTo = route('customer_dashboard'); // Redirect to customer dashboard
         }
 

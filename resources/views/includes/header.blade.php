@@ -12,7 +12,7 @@
             </li>
 
             <li class="nav-item active">
-              <a class="nav-link" href="#">Log Out <span class="sr-only"></span></a>
+              <a class="nav-link" href="{{route('logout')}}">Log Out <span class="sr-only"></span></a>
           </li>
 
         </ul>

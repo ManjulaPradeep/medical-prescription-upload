@@ -29,7 +29,26 @@ class PrescriptionController extends Controller
      */
     public function store(StorePrescriptionRequest $request)
     {
-        //
+        try {
+            $prescription = Prescription::create([
+                'delivery_time' => $request->input('delivery_time'),
+                'Address' => $request->input('Address'),
+                'note' => $request->input('note'),
+                'img1' => $request->input('img1'),
+                'img2' => $request->input('img2'),
+                'img3' => $request->input('img3'),
+                'img4' => $request->input('img4'),
+                'img5' => $request->input('img5'),
+            ]);
+
+            // Redirect to a specific route upon successful creation
+            return redirect()->back()->with('success', 'Prescription Uploaded successfully');
+        } catch (\Throwable $th) {
+            // Log::error('Failed to create a student: ' . $th->getMessage());
+
+            // Redirect to a specific route in case of failure
+            return redirect()->back()->with('error', 'Failed to upload the Prescription. ' . $th->getMessage());
+        }
     }
 
     /**

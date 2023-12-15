@@ -68,7 +68,7 @@
         </form>
 
         <div class="inputBox">
-            <a href="{{ URL::route('loginPage') }}" class="form-link">Go to Login Page </a>
+            <a href="{{ URL::route('login') }}" class="form-link">Go to Login Page </a>
         </div>
 
     </div>

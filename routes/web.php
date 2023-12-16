@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\QuatationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,11 +39,16 @@ Route::middleware('staff')->group(function () {
 Route::middleware('customer')->group(function () {
     // Customer routes
     Route::get('customer_dashboard', function () {return view('customer.dashboard');})->name('customer_dashboard');
-    Route::post('prescription',[PrescriptionController::class,'store'])->name('savePrescription');
 });
 
 
 //for Testing only - skipping permissions
 Route::get('customer_dashboard', function () {return view('customer.dashboard');})->name('customer_dashboard');
+
+Route::get('/prescriptions/create', [PrescriptionController::class, 'create'])->name('prescriptions.create');
+Route::get('/prescriptions/customer', [PrescriptionController::class, 'indexForCustomer'])->name('prescriptions.indexForCustomer');
+Route::get('/prescriptions/staff', [PrescriptionController::class, 'indexForStaff']);
 Route::post('prescription',[PrescriptionController::class,'store'])->name('savePrescription');
 
+
+Route::get('/quatations/create', [QuatationController::class, 'create'])->name('quatation.create');

@@ -20,14 +20,6 @@
                 </div>
             @endif
 
-            <div class="userSelect" id="userSelect">
-                User Type
-                <select name="user_type" required="required">
-                    <option value="customer">Customer</option>
-                    <option value="staff">Pharmacy Staff</option>
-                </select>
-            </div>
-
             <div class="inputBox">
                 <input type="email" name="email" required="required">
                 <label for="">E mail</label>

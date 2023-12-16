@@ -23,7 +23,7 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
         // $this->redirectTo = route('customer_dashboard'); // Default redirection path
-        $this->redirectTo = route('landing'); // Default redirection path
+        $this->redirectTo = route('home'); // Default redirection path
 
     }
 

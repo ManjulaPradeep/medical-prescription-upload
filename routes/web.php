@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {return view('welcome');})->name('landing');
-// Route::get('/', function () {return view('pages\common\home');})->name('landing');
-Route::get('/home', function () {return view('pages\common\home');})->name('home');
+Route::get('/', function () {return view('welcome');})->name('home');
+// Route::get('/home', function () {return view('pages\common\home');})->name('home');
 
 
 // Route::get('loginPage', function () { return view('pages.common.login'); })->name('loginPage');

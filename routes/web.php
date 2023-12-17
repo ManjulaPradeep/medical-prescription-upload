@@ -47,7 +47,7 @@ Route::middleware('customer')->group(function () {
 });
 
 
-//for Testing only - skipping permissions
+// -------------------for Testing only - skipping permissions -----------------------------
 // Route::get('customer_dashboard', function () {return view('customer.dashboard');})->name('customer_dashboard');
 
 // Route::get('/prescriptions/create', [PrescriptionController::class, 'create'])->name('prescriptions.create');

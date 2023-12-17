@@ -20,7 +20,7 @@ class CheckStaff
             return $next($request);
         }
 
-        abort(403, 'Unauthorized action.');
-        // return $next($request);
+        // abort(403, 'Unauthorized action.');
+        return $next($request);
     }
 }

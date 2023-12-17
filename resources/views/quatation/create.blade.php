@@ -182,7 +182,7 @@
 
             function saveQuotationData() {
                 $.ajax({
-                    url: '{{ route('quatation.store') }}', // Adjust the route name
+                    url: '{{ route('quatation.store') }}',
                     method: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}',
@@ -191,11 +191,9 @@
                     },
                     success: function(response) {
                         console.log(response.message);
-                        // Optionally, you can redirect the user or perform other actions after success
                     },
                     error: function(xhr, status, error) {
                         console.error(error);
-                        // Handle the error case if needed
                     }
                 });
             }
@@ -233,7 +231,5 @@
             }
         });
     </script>
-
-
 
 @endsection

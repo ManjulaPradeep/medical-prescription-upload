@@ -28,22 +28,21 @@ class QuatationController extends Controller
             $user = Auth::user();
 
             if ($user) {
-                // Wrap the database query in a try-catch block
+
                 try {
                     $quotations = $user->quotations ?? collect();
                     return view('quatation.index', compact('quotations'));
                 } catch (QueryException $e) {
-                    // Handle the exception
 
-                    return redirect()->back()->withErrors(['error' => 'Database error: ' . $e->getMessage()]);
+                    // return redirect()->back()->withErrors(['error' => 'Database error: ' . $e->getMessage()]);
 
-                    // if ($e->getCode() == '42S22') {
-                    //     // Column not found error
-                    //     return redirect()->back()->withErrors(['error' => 'Column not found in the database table']);
-                    // } else {
-                    //     // Other database-related errors
-                    //     return redirect()->back()->withErrors(['error' => 'Database error: ' . $e->getMessage()]);
-                    // }
+                    if ($e->getCode() == '42S22') {
+                        // Column not found error
+                        return redirect()->back()->withErrors(['error' => 'Column not found in the database table']);
+                    } else {
+                        // Other database-related errors
+                        return redirect()->back()->withErrors(['error' => 'Database error: ' . $e->getMessage()]);
+                    }
                 }
             }
 

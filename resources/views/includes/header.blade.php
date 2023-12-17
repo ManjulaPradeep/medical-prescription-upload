@@ -20,14 +20,6 @@
                 <a class="nav-link text-danger" href="{{ route('logout') }}">Log Out <span class="sr-only"></span></a>
             </li>
 
-            
-            {{-- <li class="nav-item active">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button class="btn btn-danger">Logout</button>
-                </form>
-            </li> --}}
-
         </ul>
     </div>
 </nav>

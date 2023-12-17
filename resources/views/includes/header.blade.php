@@ -15,9 +15,6 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
 
             <li class="nav-item active">
                 <a class="nav-link text-danger" href="{{ route('logout') }}">Log Out <span class="sr-only"></span></a>

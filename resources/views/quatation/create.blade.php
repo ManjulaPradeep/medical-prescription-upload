@@ -7,6 +7,16 @@
     <div class="container">
         <h1>Create Quotation</h1>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="row p-3">
             {{-- --------------- Left side div (images) ------------------ --}}
             <div class="col-4 border border-primary border-end-0 p-3">
@@ -78,9 +88,9 @@
                         </div>
 
                         <div class="row justify-content-end mb-3">
-                            <div class="col-3">
-                                <button class="btn btn-primary w-100" onclick="updateTable()">Send Quotation</button>
-                            </div>
+                            {{-- <div class="col-3">
+                                <button class="btn btn-primary w-100" id="sendQuotation">Send Quotation</button>
+                            </div> --}}
                             <div class="col-3">
                                 <button type="button" class="btn btn-success w-100" id="addDrug">Add</button>
                             </div>
@@ -106,6 +116,11 @@
                     </table>
 
                     <div class="row justify-content-end mb-3">
+
+                        <div class="col-3">
+                            <button class="btn btn-primary w-100" id="sendQuotation">Send Quotation</button>
+                        </div>
+
                         <div class="col-3">
                             <label for="total">Total</label>
                         </div>
@@ -160,6 +175,33 @@
                 calculateTotal();
             });
 
+
+            $('#sendQuotation').click(function() {
+                saveQuotationData();
+            });
+
+            function saveQuotationData() {
+                $.ajax({
+                    url: '{{ route('quatation.store') }}', // Adjust the route name
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        tableData: drugEntries,
+                        total: total.toFixed(2),
+                    },
+                    success: function(response) {
+                        console.log(response.message);
+                        // Optionally, you can redirect the user or perform other actions after success
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        // Handle the error case if needed
+                    }
+                });
+            }
+
+
+
             function isValidNumber(value) {
                 // Check if the value is a valid number (integer, float, or double)
                 return /^[+-]?\d+(\.\d+)?$/.test(value);
@@ -190,27 +232,6 @@
                 $('#total').val(total.toFixed(2));
             }
         });
-
-        // submit data
-        function saveQuotationData() {
-            $.ajax({
-                url: '/save-quotation',
-                method: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    tableData: drugEntries,
-                    total: total.toFixed(2),
-                },
-                success: function(response) {
-                    // Handle the success response
-                    console.log(response.message);
-                },
-                error: function(xhr, status, error) {
-                    // Handle the error response
-                    console.error(error);
-                }
-            });
-        }
     </script>
 
 

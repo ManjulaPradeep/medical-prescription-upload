@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quatation;
 use App\Http\Requests\StoreQuatationRequest;
 use App\Http\Requests\UpdateQuatationRequest;
+use Illuminate\Support\Facades\Auth;
 
 class QuatationController extends Controller
 {
@@ -13,7 +14,15 @@ class QuatationController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        if ($user) {
+            $quotations = $user->quotations ?? collect();
+            return view('quatation.index', compact('quotations'));
+        }
+    
+        return redirect()->back()->withErrors(['error' => 'No quotations for you']);
+
     }
 
     /**

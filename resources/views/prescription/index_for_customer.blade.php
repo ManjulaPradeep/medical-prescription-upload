@@ -6,6 +6,16 @@
     <div class="container mt-4">
         <h1>Your Prescriptions</h1>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @if ($prescriptions->count() > 0)
             <div class="row">
                 @foreach ($prescriptions as $prescription)
@@ -23,7 +33,8 @@
                                     @foreach (range(1, 5) as $index)
                                         @if ($prescription->{"img$index"})
                                             <div class="col-md-4 mb-2">
-                                                <img src="{{ asset($prescription->{"img$index"}) }}" class="img-fluid" alt="Image {{ $index }}">
+                                                <img src="{{ asset($prescription->{"img$index"}) }}" class="img-fluid"
+                                                    alt="Image {{ $index }}">
                                             </div>
                                         @endif
                                     @endforeach

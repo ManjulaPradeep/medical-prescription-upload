@@ -51,3 +51,4 @@ Route::post('prescription',[PrescriptionController::class,'store'])->name('saveP
 
 
 Route::get('/quatations/create', [QuatationController::class, 'create'])->name('quatation.create');
+Route::get('/quatations/index', [QuatationController::class, 'index'])->name('quatation.index');

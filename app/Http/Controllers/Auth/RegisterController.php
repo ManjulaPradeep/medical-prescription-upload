@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RegisterController extends Controller
 {
@@ -56,7 +57,7 @@ class RegisterController extends Controller
             $user->assignRole('staff');
             $this->redirectTo = route('staff_dashboard'); // Redirect to staff dashboard
         } else {
-            $user->assignRole('customer');// Assinging role by Spatie
+            $user->assignRole('customer'); // Assinging role by Spatie
             $this->redirectTo = route('customer_dashboard'); // Redirect to customer dashboard
         }
 
@@ -67,6 +68,46 @@ class RegisterController extends Controller
             ?: redirect($this->redirectPath());
 
 
+        // $this->validator($request->all())->validate();
+        // $user = $this->create($request->all());
+
+        // // Assign role based on user type (customer or staff)
+        // $userType = $request->input('user_type');
+
+        // if ($userType === 'staff') {
+        //     $role = Role::findOrCreate('staff');
+        //     $permissions = [
+        //         'view-prescriptions',
+        //         'create-quotation',
+        //         'view-quotation',
+        //         'create-notification',
+        //         'create-mail',
+        //         'send-mail'
+        //     ]; // Add staff permissions
+        // } else {
+        //     $role = Role::findOrCreate('customer');
+        //     $permissions = [
+        //         'create-prescriptions',
+        //         'view-prescriptions',
+        //         'view-quotation',
+        //         'accept-quotation',
+        //         'reject-quotation',
+        //         'view-notification'
+        //     ]; // Add customer permissions
+        // }
+
+        // $user->assignRole($role);
+
+        // foreach ($permissions as $permission) {
+        //     $perm = Permission::findOrCreate($permission);
+        //     $user->givePermissionTo($perm);
+        // }
+
+        // $this->redirectTo = $userType === 'staff' ? route('staff_dashboard') : route('customer_dashboard');
+
+        // Auth::logout();
+
+        // return $this->registered($request, $user) ?: redirect($this->redirectPath());
     }
 
     protected function validator(array $data)
@@ -95,5 +136,3 @@ class RegisterController extends Controller
         ]);
     }
 }
-
-

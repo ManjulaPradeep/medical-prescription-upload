@@ -52,4 +52,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Prescription::class);
     }
+
+    public function quotations()
+    {
+        return $this->hasMany(Quatation::class);
+    }
+
+    public function permissions(){
+        return $this->hasMany(Permission::class);
+    }
 }
